@@ -4,8 +4,10 @@ import { ThemeProvider } from "styled-components";
 const theme = {
   colors: {
     clickable: "#165755 !important;",
-    backgroundColor: '#165755 !important;',
-    text: 'white',
+    componentBackgroundColor: '#065b57 !important',
+    backgroundColor: '#131722 !important;',
+    text: 'white !important;',
+    inverseText: 'black !important;',
   },
   fonts: ["sans-serif", "Roboto"],
 };
