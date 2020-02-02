@@ -6,7 +6,6 @@ const ChartContainer = styled.div`
   width: 100%;
   height: 500px;
   grid-area: chart;
-  padding: 20px 0;
 `
 const Chart: FunctionComponent = () => (
   <ChartContainer>

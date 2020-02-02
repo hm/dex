@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { P } from '../ui/text';
 
 const OrderBookContainer = styled.div`
-  grid-area: col2;
+  grid-area: hist;
 `
 const Grid = styled.div`
   display: grid;
@@ -30,11 +30,11 @@ const CurrentValue = styled.div`
   background-color: ${props => props.theme.colors.componentBackgroundColor};
 `;
 
-const OrderBook: FunctionComponent = () => (
+const TradeHistory: FunctionComponent = () => (
   <OrderBookContainer>
-    <P variant="h5"> Order Book </P>
+    <P variant="h5"> Trade History </P>
     {
-      [...Array(10)].map(number => (
+      [...Array(5)].map(number => (
         <OrderBookRow />
       ))
     }
@@ -42,10 +42,10 @@ const OrderBook: FunctionComponent = () => (
       <OrderBookRow />
     </CurrentValue>
     {
-      [...Array(10)].map(number => (
+      [...Array(5)].map(number => (
         <OrderBookRow />
       ))
     }
   </OrderBookContainer>
 )
-export default OrderBook;
+export default TradeHistory;

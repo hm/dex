@@ -6,7 +6,6 @@ const PlaceOrderRoot = styled.div`
   width: 100%;
   grid-area: buysell;
   display: flex;
-  padding: 20px 0;
 `
 
 const PlaceOrder: FunctionComponent = () => (
