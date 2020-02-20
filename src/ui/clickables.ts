@@ -7,4 +7,5 @@ export const Button = styled(btn) <{ contained?: boolean }>`
   span {
     color:${props => props.contained ? props.theme.colors.text : props.theme.colors.inverseText };
   }
+  min-width: 0!important;
 `;

@@ -6,9 +6,10 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Select from '@material-ui/core/Select';
 import { FormControl, MenuItem } from '@material-ui/core';
-import { Row } from '../ui/layout';
-import { P } from '../ui/text';
-import { IThemes } from '../themes/CurrentTheme';
+import { Row } from 'ui/layout';
+import { P } from 'ui/text';
+import { IThemes } from 'themes/CurrentTheme';
+import { UserStore } from 'stores/user';
 
 const NavbarContainer = styled.div`
   display: flex;
@@ -27,6 +28,7 @@ const ThemedSelect = styled(Select)`
 `
 
 const Navbar: FunctionComponent = () => {
+  const userStore = UserStore.get();
   return (
     <NavbarRoot position="static">
       <Toolbar>
@@ -36,7 +38,11 @@ const Navbar: FunctionComponent = () => {
           </Typography>
           <Row>
             <FormControl>
-              <ThemedSelect startAdornment={<P> Theme: </P>}>
+              <ThemedSelect
+                startAdornment={<P> Theme: </P>}
+                onChange={(e) => userStore.setTheme(e.target.value as IThemes)}
+                value={userStore.currentTheme}
+              >
                 <MenuItem value={IThemes.light}> Light </MenuItem>
                 <MenuItem value={IThemes.dark}> Dark </MenuItem>
               </ThemedSelect>

@@ -16,7 +16,8 @@ const DashboardContainer = styled.div`
     "col1   col2   chart    chart   coins  col4"
     "col1   col2   chart    chart   hist   col4"
     "col1   col2   buysell  buysell hist   col4"
-    "col1   col2   buysell  buysell hist   col4"
+    "col1   col2   buysell  buysell hist   col4";
+  grid-template-columns: 1fr 200px 2fr 2fr 200px 1fr;
 `;
 
 const Dashboard: FunctionComponent = () => {

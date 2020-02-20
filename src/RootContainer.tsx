@@ -3,8 +3,9 @@ import { Route, Router, Switch } from 'react-router-dom';
 import Dashboard from './views/Dashboard';
 import { createBrowserHistory } from 'history';
 import { createGlobalStyle } from 'styled-components'
-import { CurrentTheme, IThemes } from './themes/CurrentTheme';
-
+import { CurrentTheme } from './themes/CurrentTheme';
+import { UserStore } from 'stores/user';
+import { observer } from 'mobx-react';
 const GlobalStyles = createGlobalStyle`
   body {
     margin: 0;
@@ -12,9 +13,10 @@ const GlobalStyles = createGlobalStyle`
   }
 `
 
-const RootContainer: FunctionComponent = () => {
+const RootContainer: FunctionComponent = observer(() => {
+  const userStore = UserStore.get();
   return (
-    <CurrentTheme theme={IThemes.dark}>
+    <CurrentTheme theme={userStore.currentTheme}>
       <>
         <GlobalStyles />
         <Router history={createBrowserHistory()}>
@@ -25,6 +27,6 @@ const RootContainer: FunctionComponent = () => {
       </>
     </CurrentTheme>
   );
-}
+})
 
 export default RootContainer;
