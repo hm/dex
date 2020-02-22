@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Paper from '@material-ui/core/Paper';
 import { Row } from '../../ui/layout';
 import { Button } from '../../ui/clickables';
-import Input from '@material-ui/core/Input';
+import { Input } from 'ui/input';
 import { P } from '../../ui/text';
 
 const BuySellRoot = styled(Paper).attrs({ variant: 'outlined', square: true })`
@@ -22,20 +22,30 @@ const fixedPercentages = [
   '100%',
 ];
 
-const BuySell: FunctionComponent = () => (
+interface IProps {
+  coin1: string,
+  coin2: string,
+  isBuy?: boolean,
+}
+
+export const BuySell: FunctionComponent<IProps> = ({
+  coin1,
+  coin2,
+  isBuy,
+}) => (
   <BuySellRoot>
-    <P> Buy ETH </P>
+    <P> {isBuy ? 'Buy' : 'Sell'} { coin1 } </P>
     <Row>
       <Button contained size="small"> Limit </Button>
       <Button contained size="small"> Market </Button>
     </Row>
     <Input
       startAdornment={<P> Price: </P>}
-      endAdornment={<P> BTC </P>}
+      endAdornment={<P> { coin2 } </P>}
     />
     <Input
       startAdornment={<P> Amount: </P>}
-      endAdornment={<P> ETH </P>}
+      endAdornment={<P> { coin1 } </P>}
     />
     <Row>
       {
@@ -48,4 +58,3 @@ const BuySell: FunctionComponent = () => (
 
   </BuySellRoot>
 )
-export default BuySell;

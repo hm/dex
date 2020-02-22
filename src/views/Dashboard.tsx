@@ -1,11 +1,12 @@
-import React, { FunctionComponent } from 'react';
-import Navbar from '../components/Navbar';
-import Chart from '../components/Chart';
-import styled from 'styled-components';
-import BuySell from '../components/PlaceOrder';
-import OrderBook from '../components/OrderBook';
-import TradeHistory from '../components/TradeHistory';
-import CoinList from '../components/CoinList';
+import React, { FunctionComponent } from "react";
+import styled from "styled-components";
+
+import { Navbar } from "components/Navbar";
+import { Chart } from "components/Chart";
+import { PlaceOrder } from "components/PlaceOrder";
+import { OrderBook } from "components/OrderBook";
+import { TradeHistory } from "components/TradeHistory";
+import { CoinList } from "components/CoinList";
 
 const DashboardContainer = styled.div`
   display: grid;
@@ -16,8 +17,9 @@ const DashboardContainer = styled.div`
     "col1   col2   chart    chart   coins  col4"
     "col1   col2   chart    chart   hist   col4"
     "col1   col2   buysell  buysell hist   col4"
-    "col1   col2   buysell  buysell hist   col4";
-  grid-template-columns: 1fr 200px 2fr 2fr 200px 1fr;
+    "col1   col2   buysell  buysell hist   col4"
+    "space   space   space  space space   space";
+  grid-template-columns: 1fr 220px minmax(250px, 500px) minmax(250px, 500px) 220px 1fr;
 `;
 
 const Dashboard: FunctionComponent = () => {
@@ -25,12 +27,12 @@ const Dashboard: FunctionComponent = () => {
     <DashboardContainer>
       <Navbar />
       <Chart />
-      <BuySell />
+      <PlaceOrder />
       <OrderBook />
       <TradeHistory />
       <CoinList />
     </DashboardContainer>
   );
-}
+};
 
 export default Dashboard;

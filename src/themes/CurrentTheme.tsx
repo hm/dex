@@ -1,6 +1,5 @@
-import { DarkTheme } from '../themes/DarkTheme';
-import { LightTheme } from '../themes/LightTheme';
-import { ReactElement } from 'react';
+import { DarkTheme } from 'themes/DarkTheme';
+import { LightTheme } from 'themes/LightTheme';
 import React from 'react';
 
 export enum IThemes {

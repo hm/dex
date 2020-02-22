@@ -9,7 +9,7 @@ import { FormControl, MenuItem } from '@material-ui/core';
 import { Row } from 'ui/layout';
 import { P } from 'ui/text';
 import { IThemes } from 'themes/CurrentTheme';
-import { UserStore } from 'stores/user';
+import { Session } from 'stores/session';
 
 const NavbarContainer = styled.div`
   display: flex;
@@ -27,8 +27,8 @@ const ThemedSelect = styled(Select)`
   color: ${props => props.theme.colors.text};
 `
 
-const Navbar: FunctionComponent = () => {
-  const userStore = UserStore.get();
+export const Navbar: FunctionComponent = () => {
+  const session = new Session();
   return (
     <NavbarRoot position="static">
       <Toolbar>
@@ -39,9 +39,9 @@ const Navbar: FunctionComponent = () => {
           <Row>
             <FormControl>
               <ThemedSelect
-                startAdornment={<P> Theme: </P>}
-                onChange={(e) => userStore.setTheme(e.target.value as IThemes)}
-                value={userStore.currentTheme}
+                startAdornment={<P> Theme:</P>}
+                onChange={(e) => session.setTheme(e.target.value as IThemes)}
+                value={session.currentTheme}
               >
                 <MenuItem value={IThemes.light}> Light </MenuItem>
                 <MenuItem value={IThemes.dark}> Dark </MenuItem>
@@ -54,5 +54,3 @@ const Navbar: FunctionComponent = () => {
     </NavbarRoot>
   );
 }
-
-export default Navbar;

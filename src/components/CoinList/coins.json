@@ -1,0 +1,44 @@
+{
+  "pairs": [
+    {
+      "name": "ETHBTC",
+      "price": 0.027362,
+      "change": 1.15
+    },
+    {
+      "name": "BNBBTC",
+      "price": 0.0022905,
+      "change": -1.15
+    },
+    {
+      "name": "ETHBTC",
+      "price": 0.027362,
+      "change": 1.15
+    },
+    {
+      "name": "BNBBTC",
+      "price": 0.0022905,
+      "change": -1.15
+    },
+    {
+      "name": "ETHBTC",
+      "price": 0.027362,
+      "change": 1.15
+    },
+    {
+      "name": "BNBBTC",
+      "price": 0.0022905,
+      "change": -1.15
+    },
+    {
+      "name": "ETHBTC",
+      "price": 0.027362,
+      "change": 1.15
+    },
+    {
+      "name": "BNBBTC",
+      "price": 0.0022905,
+      "change": -1.15
+    }
+  ]
+}

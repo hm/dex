@@ -7,7 +7,7 @@ const OrderBookContainer = styled.div`
 `
 const Grid = styled.div`
   display: grid;
-  grid-template-areas: "price amount total"
+  grid-template-areas: "price amount total";
 `
 
 const Amount = styled(P)`
@@ -30,7 +30,7 @@ const CurrentValue = styled.div`
   background-color: ${props => props.theme.colors.componentBackgroundColor};
 `;
 
-const OrderBook: FunctionComponent = () => (
+export const OrderBook: FunctionComponent = () => (
   <OrderBookContainer>
     <P variant="h5"> Order Book </P>
     {
@@ -48,4 +48,3 @@ const OrderBook: FunctionComponent = () => (
     }
   </OrderBookContainer>
 )
-export default OrderBook;

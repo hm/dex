@@ -4,7 +4,7 @@ import Dashboard from './views/Dashboard';
 import { createBrowserHistory } from 'history';
 import { createGlobalStyle } from 'styled-components'
 import { CurrentTheme } from './themes/CurrentTheme';
-import { UserStore } from 'stores/user';
+import { Session } from 'stores/session';
 import { observer } from 'mobx-react';
 const GlobalStyles = createGlobalStyle`
   body {
@@ -14,9 +14,9 @@ const GlobalStyles = createGlobalStyle`
 `
 
 const RootContainer: FunctionComponent = observer(() => {
-  const userStore = UserStore.get();
+  const session = new Session();
   return (
-    <CurrentTheme theme={userStore.currentTheme}>
+    <CurrentTheme theme={session.currentTheme}>
       <>
         <GlobalStyles />
         <Router history={createBrowserHistory()}>
