@@ -1,4 +1,10 @@
-import { observable, action, IReactionDisposer, reaction, computed } from "mobx";
+import {
+  observable,
+  action,
+  IReactionDisposer,
+  reaction,
+  computed
+} from "mobx";
 import { IThemes } from "themes/CurrentTheme";
 import { BarStyles, Themes } from "react-tradingview-widget";
 import { Session } from "stores/session";
@@ -29,33 +35,33 @@ export const presetIntervalRanges = [
 ];
 
 @singleton
-export class ChartState {
+export class Chart {
+  @observable
+  session = new Session();
+
   themeDisposer: IReactionDisposer;
   coinPairDisposer: IReactionDisposer;
 
   @observable
   currentCoinPair = {
     coin1: "ETH",
-    coin2: "BTC",
+    coin2: "BTC"
   };
 
   @computed
-  get currentTradeSymbol () {
+  get currentTradingPair() {
     return this.currentCoinPair.coin1 + this.currentCoinPair.coin2;
   }
 
   @observable
-  session = new Session();
-
-  @observable
   chartSettings = {
-    symbol: this.currentTradeSymbol,
+    symbol: this.currentTradingPair,
     theme:
       this.session.currentTheme === IThemes.dark ? Themes.DARK : Themes.LIGHT,
     interval: "W",
     range: "W",
     hide_top_toolbar: true,
-    barStyles: BarStyles.CANDLES,
+    barStyles: BarStyles.CANDLES
   };
 
   constructor() {
@@ -69,25 +75,26 @@ export class ChartState {
       }
     );
 
-  this.coinPairDisposer = reaction(
-      () => this.currentTradeSymbol,
+    this.coinPairDisposer = reaction(
+      () => this.currentTradingPair,
       () => {
-        this.chartSettings.symbol = this.currentTradeSymbol;
+        this.chartSettings.symbol = this.currentTradingPair;
       }
-    )
+    );
   }
 
   dispose = () => {
-    console.log('dispose')
+    console.log("dispose");
     this.themeDisposer();
     this.coinPairDisposer();
-  }
+  };
 
   @action
-  setCoin = (coin: string) => {
-    this.currentCoinPair.coin1 = coin.substr(0, 3);
-    this.currentCoinPair.coin2 = coin.substr(3, 6);
-  }
+  setCoin = (coins: { coin1: string; coin2: string }) => {
+    this.currentCoinPair = {
+      ...coins
+    };
+  };
 
   @action
   toggleAdvancedMode = () => {

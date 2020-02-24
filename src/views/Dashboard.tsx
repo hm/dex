@@ -2,7 +2,7 @@ import React, { FunctionComponent } from "react";
 import styled from "styled-components";
 
 import { Navbar } from "components/Navbar";
-import { Chart } from "components/Chart";
+import { TradingChart } from "components/TradingChart";
 import { PlaceOrder } from "components/PlaceOrder";
 import { OrderBook } from "components/OrderBook";
 import { TradeHistory } from "components/TradeHistory";
@@ -26,7 +26,7 @@ const Dashboard: FunctionComponent = () => {
   return (
     <DashboardContainer>
       <Navbar />
-      <Chart />
+      <TradingChart />
       <PlaceOrder />
       <OrderBook />
       <TradeHistory />

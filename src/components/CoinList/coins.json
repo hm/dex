@@ -2,43 +2,24 @@
   "pairs": [
     {
       "name": "ETHBTC",
+      "coin1": "ETH",
+      "coin2": "BTC",
       "price": 0.027362,
       "change": 1.15
     },
     {
       "name": "BNBBTC",
+      "coin1": "BNB",
+      "coin2": "BTC",
       "price": 0.0022905,
       "change": -1.15
     },
     {
-      "name": "ETHBTC",
+      "name": "EOSETH",
+      "coin1": "EOS",
+      "coin2": "ETH",
       "price": 0.027362,
       "change": 1.15
-    },
-    {
-      "name": "BNBBTC",
-      "price": 0.0022905,
-      "change": -1.15
-    },
-    {
-      "name": "ETHBTC",
-      "price": 0.027362,
-      "change": 1.15
-    },
-    {
-      "name": "BNBBTC",
-      "price": 0.0022905,
-      "change": -1.15
-    },
-    {
-      "name": "ETHBTC",
-      "price": 0.027362,
-      "change": 1.15
-    },
-    {
-      "name": "BNBBTC",
-      "price": 0.0022905,
-      "change": -1.15
     }
   ]
 }
