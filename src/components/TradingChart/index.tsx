@@ -15,8 +15,6 @@ const ChartContainer = styled.div`
 export const TradingChart: FunctionComponent = observer(() => {
   const chart = new Chart();
 
-  useEffect(() => () => new Chart().dispose(), []);
-
   return (
     <ChartContainer>
       <ChartFilters />
