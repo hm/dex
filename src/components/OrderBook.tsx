@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { P } from '../ui/text';
 
 const OrderBookContainer = styled.div`
-  grid-area: col2;
+  grid-area: orderbook;
 `
 const Grid = styled.div`
   display: grid;
