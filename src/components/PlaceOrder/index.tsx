@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
 import styled from "styled-components";
 import { BuySell } from "./BuySell";
-import { ChartState } from "components/Chart/chartState";
+import { Chart } from "stores/chart";
 import { observer } from "mobx-react";
 
 const PlaceOrderRoot = styled.div`
@@ -11,11 +11,11 @@ const PlaceOrderRoot = styled.div`
 `;
 
 export const PlaceOrder: FunctionComponent = observer(() => {
-  const chartState = new ChartState();
+  const chart = new Chart();
   return (
     <PlaceOrderRoot>
-      <BuySell isBuy {...chartState.currentCoinPair} />
-      <BuySell {...chartState.currentCoinPair} />
+      <BuySell isBuy {...chart.currentCoinPair} />
+      <BuySell {...chart.currentCoinPair} />
     </PlaceOrderRoot>
   );
 });

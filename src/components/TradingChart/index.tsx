@@ -2,7 +2,7 @@ import React, { FunctionComponent, useEffect } from "react";
 import TradingViewWidget from "react-tradingview-widget";
 import styled from "styled-components";
 import { observer } from "mobx-react";
-import { ChartState } from "components/Chart/chartState";
+import { Chart } from "stores/chart";
 import { ChartFilters } from "./ChartFilters";
 
 const ChartContainer = styled.div`
@@ -12,15 +12,15 @@ const ChartContainer = styled.div`
   grid-area: chart;
 `;
 
-export const Chart: FunctionComponent = observer(() => {
-  const chartState = new ChartState();
+export const TradingChart: FunctionComponent = observer(() => {
+  const chart = new Chart();
 
-  // useEffect(() => () => chartState.dispose(), []);
+  useEffect(() => () => new Chart().dispose(), []);
 
   return (
     <ChartContainer>
       <ChartFilters />
-      <TradingViewWidget autosize {...chartState.chartSettings} />
+      <TradingViewWidget autosize {...chart.chartSettings} />
     </ChartContainer>
   );
 });

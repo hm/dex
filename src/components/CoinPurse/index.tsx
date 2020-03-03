@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
 import styled from "styled-components";
 import { P } from "ui/text";
-import { ChartState } from "components/Chart/chartState";
+import { Chart } from "stores/chart";
 import { observer } from "mobx-react";
 import { User } from "stores/user";
 import { ButtonLink } from "ui/clickables";
@@ -49,15 +49,15 @@ const Price = styled(P)`
 const Amount = styled(P)``;
 
 export const CoinPurse: FunctionComponent = observer(() => {
-  const chartState = new ChartState();
+  const chart = new Chart();
   const user = new User();
-  const { coin1, coin2 } = chartState.currentCoinPair;
+  const { coin1, coin2 } = chart.currentCoinPair;
   return (
     <OrderBookContainer>
       <P variant="h5">
         {coin1} / {coin2}
       </P>
-      {Object.values(chartState.currentCoinPair).map(currency => {
+      {Object.values(chart.currentCoinPair).map(currency => {
         return (
           <CoinListRow
             key={currency}
