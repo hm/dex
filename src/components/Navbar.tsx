@@ -4,12 +4,12 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import Select from '@material-ui/core/Select';
 import { FormControl, MenuItem } from '@material-ui/core';
 import { Row } from 'ui/layout';
 import { P } from 'ui/text';
 import { IThemes } from 'themes/CurrentTheme';
 import { Session } from 'stores/session';
+import { ThemedSelect } from 'ui/input';
 
 const NavbarContainer = styled.div`
   display: flex;
@@ -21,11 +21,7 @@ const NavbarRoot = styled(AppBar)`
   grid-area: navbar;
   background-color: ${props => props.theme.colors.componentBackgroundColor};
   color: ${props => props.theme.colors.text};
-`
-
-const ThemedSelect = styled(Select)`
-  color: ${props => props.theme.colors.text};
-`
+`;
 
 export const Navbar: FunctionComponent = () => {
   const session = new Session();

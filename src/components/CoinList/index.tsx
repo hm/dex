@@ -1,10 +1,11 @@
 import React, { FunctionComponent } from "react";
 import styled from "styled-components";
 import { P } from "ui/text";
-import coins from "./coins.json";
+import tradingPairs from 'components/CoinList/tradingPairs.json';
 import { Input } from "ui/input";
 import Search from "@material-ui/icons/Search";
 import { Chart } from "stores/chart";
+import { ITicker } from "./coins";
 
 const OrderBookContainer = styled.div`
   grid-area: coins;
@@ -29,19 +30,21 @@ const PercentChange = styled(P)`
   justify-self: end;
 `;
 
+interface ICoinListRow {
+  name: string;
+  coin1: ITicker;
+  coin2: ITicker;
+  price: number;
+  change: number;
+};
+
 const CoinListRow = ({
   name,
   coin1,
   coin2,
   price,
   change
-}: {
-  name: string;
-  coin1: string;
-  coin2: string;
-  price: number;
-  change: number;
-}) => {
+}: ICoinListRow) => {
   const chart = new Chart();
   return (
   <CoinPairRow onClick={() => chart.setCoin({coin1, coin2})}>
@@ -62,7 +65,7 @@ export const CoinList: FunctionComponent = () => {
     <OrderBookContainer>
       <P variant="h5"> Coin Pairs </P>
       <Input startAdornment={<SearchIcon />} placeholder="Search for Coins" />
-      {coins.pairs.map(coin => CoinListRow(coin))}
+      {tradingPairs.data.map(coin => CoinListRow(coin as ICoinListRow))}
     </OrderBookContainer>
   );
 };

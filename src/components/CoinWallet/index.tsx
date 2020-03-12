@@ -5,7 +5,6 @@ import { Chart } from "stores/chart";
 import { observer } from "mobx-react";
 import { User } from "stores/user";
 import { ButtonLink } from "ui/clickables";
-import { ITicker } from "components/CoinList/coins";
 import coinValues from 'components/CoinList/coinValues.json';
 
 const OrderBookContainer = styled.div`
@@ -21,11 +20,20 @@ const CoinListRow = ({
   amount: number;
   price: number;
 }) => {
+  const chart = new Chart();
   return (
     <CoinPairRow>
-      <P> {name} </P>
-      <Amount> {amount} </Amount>
-      <Price>{Math.round(price * 100000) / 100000}</Price>
+      <Left> {name} </Left>
+      <Left> {amount} </Left>
+      <Left>${Math.round(price * 100000) / 100000}</Left>
+      <Right>
+        <ButtonLink contained size="small">
+          Withdraw
+        </ButtonLink>
+        <ButtonLink contained size="small">
+          Deposit
+        </ButtonLink>
+      </Right>
     </CoinPairRow>
   );
 };
@@ -36,47 +44,42 @@ const ViewWallet = styled(ButtonLink)`
 
 const CoinPairRow = styled.div`
   display: grid;
-  grid-template-areas: "price amount total";
-  grid-template-columns: 1.5fr 1fr 1fr;
-  &:hover {
-    cursor: pointer;
-    background-color: rgba(128, 128, 128, 0.5);
-  }
+  grid-template-columns: 3fr 3fr 2fr 2fr;
 `;
 
-const Price = styled(P)`
+const Left = styled(P)``;
+
+const Center = styled(P)`
+  justify-self: center;
+`;
+
+const Right = styled(P)`
   justify-self: end;
 `;
-
-const Amount = styled(P)``;
-
-export const CoinPurse: FunctionComponent = observer(() => {
-  const chart = new Chart();
+export const CoinWallet: FunctionComponent = observer(() => {
   const user = new User();
-  const { coin1, coin2 } = chart.currentCoinPair;
   return (
     <OrderBookContainer>
       <P variant="h5">
-        {coin1} / {coin2}
+        Asset overview
       </P>
       <CoinPairRow>
-        <P> Name </P>
-        <Amount> Amount </Amount>
-        <Price> Price </Price>
+        <Left> Name </Left>
+        <Left> Balance </Left>
+        <Left> Value (USD) </Left>
       </CoinPairRow>
-
-      {Object.values(chart.currentCoinPair).map((currency: ITicker) => {
+      {Object.keys(user.wallet).map(currency => {
         return (
           <CoinListRow
             key={currency}
             name={currency}
-            amount={user.wallet[currency] || 0}
+            amount={(user.wallet as any)[currency] || 0}
             price={(coinValues as any)[currency]}
           />
         );
       })}
-      <ViewWallet contained size="small" to="/wallet">
-        View Entire Wallet
+      <ViewWallet contained size="small" to="/">
+        View Dashboard
       </ViewWallet>
     </OrderBookContainer>
   );

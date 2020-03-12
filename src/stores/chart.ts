@@ -9,6 +9,7 @@ import { IThemes } from "themes/CurrentTheme";
 import { BarStyles, Themes } from "react-tradingview-widget";
 import { Session } from "stores/session";
 import { singleton } from "decorators/singleton";
+import { ITicker } from "components/CoinList/coins";
 
 interface IPresetIntervalRange {
   name: string;
@@ -43,7 +44,7 @@ export class Chart {
   coinPairDisposer: IReactionDisposer;
 
   @observable
-  currentCoinPair = {
+  currentCoinPair: { coin1: ITicker; coin2: ITicker } = {
     coin1: "ETH",
     coin2: "BTC"
   };
@@ -90,7 +91,7 @@ export class Chart {
   };
 
   @action
-  setCoin = (coins: { coin1: string; coin2: string }) => {
+  setCoin = (coins: { coin1: ITicker; coin2: ITicker }) => {
     this.currentCoinPair = {
       ...coins
     };

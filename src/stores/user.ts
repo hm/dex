@@ -1,16 +1,21 @@
 import { observable } from 'mobx';
 import { singleton } from 'decorators/singleton';
+import { ITicker } from 'components/CoinList/coins';
 
-interface IWallet {
-  [index: string]: number;
-}
+type IWallet = {
+  [index in ITicker]: number;
+};
 
 @singleton
 export class User {
   @observable
   wallet: IWallet = {
-    eth: 30,
-    bnb: 50,
-    btc: 0.234,
+    BTC: 0.234,
+    ETH: 30,
+    BNB: 50,
+    EOS: 0,
+    DAI: 234,
+    BAT: 555,
+    USDC: 1236,
   };
 }

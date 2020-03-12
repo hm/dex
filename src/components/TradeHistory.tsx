@@ -8,6 +8,7 @@ const OrderBookContainer = styled.div`
 const Grid = styled.div`
   display: grid;
   grid-template-areas: "price amount total";
+  grid-template-columns: 1fr 1fr 1fr ;
 `
 
 const Amount = styled(P)`
@@ -33,6 +34,11 @@ const CurrentValue = styled.div`
 export const TradeHistory: FunctionComponent = () => (
   <OrderBookContainer>
     <P variant="h5"> Trade History </P>
+    <Grid>
+      <P> Coin Pair </P>
+      <Amount> Amount </Amount>
+      <Total> Date </Total>
+    </Grid>
     {
       [...Array(20)].map(number => (
         <OrderBookRow />

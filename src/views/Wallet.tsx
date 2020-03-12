@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react";
 import styled from "styled-components";
-import { CoinPurse } from "components/CoinPurse";
+import { CoinWallet } from "components/CoinWallet";
 
 const DashboardContainer = styled.div`
   display: grid;
@@ -8,13 +8,13 @@ const DashboardContainer = styled.div`
   grid-template-areas:
     "navbar navbar navbar   navbar  navbar navbar"
     ".      .      purse    purse .    . ";
-  grid-template-columns: 1fr 220px minmax(250px, 500px) minmax(250px, 500px) 220px 1fr;
+  grid-template-columns: 1fr 220px minmax(300px, 500px) minmax(300px, 500px) 220px 1fr;
 `;
 
 export const Wallet: FunctionComponent = () => {
   return (
     <DashboardContainer>
-      <CoinPurse />
+      <CoinWallet />
     </DashboardContainer>
   );
 };
