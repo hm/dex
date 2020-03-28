@@ -6,7 +6,8 @@ import { observer } from "mobx-react";
 import { User } from "stores/user";
 import { ButtonLink } from "ui/clickables";
 import { ITicker } from "components/CoinList/coins";
-import coinValues from 'components/CoinList/coinValues.json';
+import coinValues from "components/CoinList/coinValues.json";
+import { CoinIcon } from "modules/CoinIcon";
 
 const OrderBookContainer = styled.div`
   grid-area: purse;
@@ -57,7 +58,9 @@ export const CoinPurse: FunctionComponent = observer(() => {
   return (
     <OrderBookContainer>
       <P variant="h5">
-        {coin1} / {coin2}
+        <CoinIcon size={24} coin={coin1} /> {coin1}
+        {' '}/{' '}
+        <CoinIcon size={24} coin={coin2} /> {coin2}
       </P>
       <CoinPairRow>
         <P> Name </P>

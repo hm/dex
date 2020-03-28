@@ -55,6 +55,7 @@ const Center = styled(P)`
 
 const Right = styled(P)`
   justify-self: end;
+  white-space: nowrap;
 `;
 export const CoinWallet: FunctionComponent = observer(() => {
   const user = new User();

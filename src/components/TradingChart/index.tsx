@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { observer } from "mobx-react";
 import { Chart } from "stores/chart";
 import { ChartFilters } from "./ChartFilters";
+import { OmniSearch } from "components/OmniSearch";
 
 const ChartContainer = styled.div`
   width: 100%;
@@ -19,6 +20,7 @@ export const TradingChart: FunctionComponent = observer(() => {
 
   return (
     <ChartContainer>
+      <OmniSearch />
       <ChartFilters />
       <TradingViewWidget autosize {...chart.chartSettings} />
     </ChartContainer>
