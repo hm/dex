@@ -8,23 +8,24 @@ import { ButtonLink } from "ui/clickables";
 import { ITicker } from "components/CoinList/coins";
 import coinValues from "components/CoinList/coinValues.json";
 import { CoinIcon } from "modules/CoinIcon";
+import { Spacer } from "ui/layout";
 
 const OrderBookContainer = styled.div`
   grid-area: purse;
 `;
 
 const CoinListRow = ({
-  name,
+  ticker,
   amount,
   price
 }: {
-  name: string;
+  ticker: ITicker;
   amount: number;
   price: number;
 }) => {
   return (
     <CoinPairRow>
-      <P> {name} </P>
+      <P><CoinIcon size={20} coin={ticker} /><Spacer size={10} />{ticker} </P>
       <Amount> {amount} </Amount>
       <Price>{Math.round(price * 100000) / 100000}</Price>
     </CoinPairRow>
@@ -68,13 +69,13 @@ export const CoinPurse: FunctionComponent = observer(() => {
         <Price> Price </Price>
       </CoinPairRow>
 
-      {Object.values(chart.currentCoinPair).map((currency: ITicker) => {
+      {Object.values(chart.currentCoinPair).map((ticker: ITicker) => {
         return (
           <CoinListRow
-            key={currency}
-            name={currency}
-            amount={user.wallet[currency] || 0}
-            price={(coinValues as any)[currency]}
+            key={ticker}
+            ticker={ticker}
+            amount={user.wallet[ticker] || 0}
+            price={(coinValues as any)[ticker]}
           />
         );
       })}

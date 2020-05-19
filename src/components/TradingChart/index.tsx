@@ -9,7 +9,7 @@ import { OmniSearch } from "components/OmniSearch";
 const ChartContainer = styled.div`
   width: 100%;
   height: 500px;
-  padding-bottom: 50px;
+  padding-bottom: 90px;
   grid-area: chart;
 `;
 
